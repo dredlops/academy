@@ -24,10 +24,10 @@ jobs:
         uses: ./.github/actions/maven_build
 
       - name: Build Docker image
+        uses: ./.github/actions/docker_build
         with:
           path_dockerfile: 'Dockerfile'
           image_name: 'academy'
-        uses: ./.github/actions/docker_build
       
       # List Docker images to confirm the build
       - name: List Docker images
