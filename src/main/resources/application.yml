@@ -8,7 +8,7 @@ quarkus:
   rest-client:
     external-api:
       url:
-        - "${EXTERNAL_API_URL}"
+        - "${external-api.url}"
   datasource:
     db-kind: postgresql
     devservices:
@@ -16,17 +16,17 @@ quarkus:
       reuse: false
       image-name: "postgres"
       container-env:
-        POSTGRES_DB: "${POSTGRES_DB}"
-        POSTGRES_USER: "${POSTGRES_USER}"
-        POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-      port: ${POSTGRES_PORT}
+        POSTGRES_DB: "postgres"
+        POSTGRES_USER: "postgres"
+        POSTGRES_PASSWORD: "postgres"
+      port: 5432
       volumes:
         - "db/init-db:/docker-entrypoint-initdb.d"
-    db-name: "${POSTGRES_DB}"
-    username: "${POSTGRES_USER}"
-    password: "${POSTGRES_PASSWORD}"
+    db-name: "postgres"
+    username: "postgres"
+    password: "postgres"
     jdbc:
-      url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+      url: jdbc:postgresql://localhost:5432/postgres
       initial-size: 2
       min-size: 2
       max-size: 5
@@ -41,8 +41,8 @@ quarkus:
     database:
       generation: none
     log:
-      sql: ${HIBERNATE_ORM_LOG_SQL:false}
+      sql: ${hibernate_orm_log_sql:false}
 
 external-api:
   url:
-    - "${EXTERNAL_API_URL}"
+    - "http://localhost:3001"
