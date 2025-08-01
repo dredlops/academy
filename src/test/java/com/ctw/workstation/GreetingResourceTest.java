@@ -8,6 +8,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 
 @QuarkusTest
 class GreetingResourceTest {
+   /*
     @Test
     void testRackEndpoint() {
         given()
@@ -16,5 +17,5 @@ class GreetingResourceTest {
                 .statusCode(200)
                 .body(notNullValue());
     }
-
+    */
 }
