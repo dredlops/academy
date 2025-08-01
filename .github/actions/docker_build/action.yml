@@ -20,5 +20,5 @@ runs:
         else
           export TAG="${{ inputs.tag_name }}"
         fi 
-        docker build . --file ${{ inputs.path_dockerfile }} --tag ${{ inputs.image_name }}:$TAG
+        docker build . --file ${{ inputs.path_dockerfile }} --tag 'docker234231s/${{ inputs.image_name }}':$TAG
       shell: bash

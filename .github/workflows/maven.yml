@@ -66,9 +66,8 @@ jobs:
       - name: Log in to private Docker registry
         uses: docker/login-action@v2
         with:
-        
          username: ${{ vars.DOCKERHUB_USERNAME }}
          password: ${{ secrets.ACADEMY }}
 
       - name: push image
-        run: docker push ${{ env.docker_image_name }}:${{ env.docker_tag_name }}
+        run: docker push docker234231s/${{ env.docker_image_name }}:${{ env.docker_tag_name }}
