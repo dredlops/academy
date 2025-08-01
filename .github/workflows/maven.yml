@@ -25,3 +25,7 @@ jobs:
 
       - name: Build Docker image
         run: docker build . --file src/main/docker/Dockerfile --tag academy:$(date +%s)
+      
+      # List Docker images to confirm the build
+      - name: List Docker images
+        run: docker image ls
