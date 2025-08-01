@@ -31,5 +31,10 @@ jobs:
           image_name: 'academy'
           tag_name: ''
 
+  Outracena:
+    runs-on: ubuntu-latest
+    steps:
       - name: List Docker images
         run: docker image ls
+
+
