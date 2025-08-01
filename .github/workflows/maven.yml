@@ -35,10 +35,10 @@ jobs:
       - name: Build Docker image
         uses: ./.github/actions/docker_build
         with:
-          path_dockerfile: "${{ env.docker_path }}"
-          image_name: "${{ env.docker_image_name }}"
-          tag_name: "${{ env.docker_tag_name }}"
-          repo_name: "${{ env.repo_name }}"
+          path_dockerfile: ${{ env.docker_path }}
+          image_name: ${{ env.docker_image_name }}
+          tag_name: ${{ env.docker_tag_name }}
+          repo_name: ${{ env.repo_name }}
 
       - name: List Docker images after build
         run: docker image ls
