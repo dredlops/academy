@@ -39,11 +39,10 @@ jobs:
         run: docker save -o ${{env.docker_image_name}}.tar ${{image_name}}:${{tag_name}}
 
       - run: mkdir -p path
-      - run: echo hello > ${{path}}/${{name}}
       - uses: actions/upload-artifact@v4
         with:
           name: "${{env.artifact_name}}"
-          path: "${{env.artifact_path}}"
+          path: "${{env.docker_image_name}}.tar"
 
 
   Outracena:
