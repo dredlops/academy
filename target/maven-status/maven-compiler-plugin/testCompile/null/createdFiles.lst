@@ -1,0 +1,9 @@
+com\ctw\workstation\GreetingResourceTest.class
+com\ctw\workstation\GreetingResourceIT.class
+com\ctw\workstation\myTestes\ExternalApi.class
+com\ctw\workstation\myTestes\WiremockResource.class
+com\ctw\workstation\myTestes\HelloExtAcademy.class
+com\ctw\workstation\myTestes\ExternalRequest.class
+com\ctw\workstation\myTestes\BookingTester.class
+com\ctw\workstation\myTestes\ExternalResponse.class
+com\ctw\workstation\config\CommodoreTestConfig.class
