@@ -58,3 +58,10 @@ jobs:
     steps:
       - name: List Docker images
         run: docker image ls
+
+  pushImage:
+    needs: Outracena
+    runs-on: ubuntu-latest
+    steps:
+      - name: push image
+        run: docker push docker234231s/${{ env.docker_image_name }}:${{ env.docker_tag_name }}
