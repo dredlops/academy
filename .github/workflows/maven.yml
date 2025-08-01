@@ -42,7 +42,7 @@ jobs:
         run: docker image ls
 
       - name: Docker save
-        run: docker save -o ${{ env.docker_image_name }}.tar ${{ env.docker_image_name }}:${{ env.docker_tag_name }}
+        run: docker save -o ${{ env.docker_image_name }}.tar 'docker234231s/${{ env.docker_image_name }}':${{ env.docker_tag_name }}
 
       - name: Create directory for artifact
         run: mkdir -p path
