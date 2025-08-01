@@ -24,7 +24,7 @@ jobs:
         run: mvn -B package --file pom.xml
 
       - name: Build Docker image
-        run: docker build . --file src/main/docker/Dockerfile --tag academy:$(date +%s)
+        run: docker build . --file src/main/docker/Dockerfile.jvm --tag academy:$(date +%s)
       
       # List Docker images to confirm the build
       - name: List Docker images
