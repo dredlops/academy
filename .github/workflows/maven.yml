@@ -32,6 +32,7 @@ jobs:
           tag_name: ''
 
   Outracena:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: List Docker images
