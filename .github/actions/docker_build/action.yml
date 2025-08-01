@@ -1,7 +1,26 @@
 name: docker
-description: Replace-With-Your-Action-Description
+description: docker build
+inputs:
+  path_dockerfile:
+    description: "Expecting Dockerfile"
+    required: false
+    default: "Dockerfile"
+  image_name:
+    description: "Expecting image_name"
+    required: true
+    default: ""
+  tag_name:
+    description: "Expecting tag_name"
+    required: false
+    default: ""
 runs:
   using: "composite"
   steps:
-    - run: docker build . --file src/main/docker/Dockerfile.jvm --tag academy:$(date +%s)
+    - run:
+        if [ -z "${{ inputs.tag_name }}" ]; 
+          then export TAG=$(date +%s)
+        else
+          export TAG="${{ inputs.tag_name }}"
+        fi 
+        docker build . --file ${{ inputs.path_dockerfile }} --tag ${{ inputs.image_name }}:TAG
       shell: bash
