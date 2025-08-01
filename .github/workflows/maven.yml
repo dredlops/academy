@@ -1,10 +1,12 @@
 name: Java CI with Maven
+
 env:
-  docker_image_name : 'academy'
-  docker_tag_name : 'v1'
-  artifact_name : "artifact_name"
-  docker_path : "src/main/docker/Dockerfile.jvm"
-  artifact_path : "artifact_name"
+  docker_image_name: 'academy'
+  docker_tag_name: 'v1'
+  artifact_name: "artifact_name"
+  docker_path: "src/main/docker/Dockerfile.jvm"
+  artifact_path: "artifact_name"
+
 on:
   push:
     branches: ["main"]
@@ -32,18 +34,23 @@ jobs:
       - name: Build Docker image
         uses: ./.github/actions/docker_build
         with:
-          path_dockerfile: "${{env.docker_path}}"
-          image_name: docker_image_name
-          tag_name: docker_tag_name
-      - name: Docker save
-        run: docker save -o ${{env.docker_image_name}}.tar ${{env.docker_image_name}}:${{env.docker_tag_name}}
+          path_dockerfile: "${{ env.docker_path }}"
+          image_name: "${{ env.docker_image_name }}"
+          tag_name: "${{ env.docker_tag_name }}"  # Make sure this is passed as a string
 
-      - run: mkdir -p path
+      - name: List Docker images after build
+        run: docker image ls
+
+      - name: Docker save
+        run: docker save -o ${{ env.docker_image_name }}.tar ${{ env.docker_image_name }}:${{ env.docker_tag_name }}
+
+      - name: Create directory for artifact
+        run: mkdir -p path
+
       - uses: actions/upload-artifact@v4
         with:
-          name: "${{env.artifact_name}}"
-          path: "${{env.docker_image_name}}.tar"
-
+          name: "${{ env.artifact_name }}"
+          path: "${{ env.docker_image_name }}.tar"
 
   Outracena:
     needs: build
@@ -51,6 +58,3 @@ jobs:
     steps:
       - name: List Docker images
         run: docker image ls
-
-
-
