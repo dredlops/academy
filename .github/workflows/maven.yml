@@ -6,6 +6,7 @@ env:
   artifact_name: "artifact_name"
   docker_path: "src/main/docker/Dockerfile.jvm"
   artifact_path: "artifact_name"
+  repo_name: "docker234231s"
 
 on:
   push:
@@ -37,12 +38,13 @@ jobs:
           path_dockerfile: "${{ env.docker_path }}"
           image_name: "${{ env.docker_image_name }}"
           tag_name: "${{ env.docker_tag_name }}"  # Make sure this is passed as a string
+          repo_name: ${{ env.repo_name }}
 
       - name: List Docker images after build
         run: docker image ls
 
       - name: Docker save
-        run: docker save -o ${{ env.docker_image_name }}.tar 'docker234231s/${{ env.docker_image_name }}':${{ env.docker_tag_name }}
+        run: docker save -o ${{ env.docker_image_name }}.tar ${{ env.repo_name }}/${{ env.docker_image_name }}:${{ env.docker_tag_name }}
 
       - name: Create directory for artifact
         run: mkdir -p path
@@ -58,6 +60,6 @@ jobs:
           password: ${{ secrets.ACADEMY }}
 
       - name: push image
-        run: docker push docker234231s/${{ env.docker_image_name }}:${{ env.docker_tag_name }}
+        run: docker push ${{ env.repo_name }}/${{ env.docker_image_name }}:${{ env.docker_tag_name }}
 
 
